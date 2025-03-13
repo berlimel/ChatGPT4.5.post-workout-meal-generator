@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customized Post-Workout Meal Suggestion</title>
+    <script>
+        function getRandomMeal(workoutType) {
+            const meals = {
+                weight_lifting: [
+                    "Scrambled eggs with spinach, mushrooms, and whole grain toast",
+                    "Grilled salmon with quinoa and broccoli",
+                    "Tofu and brown rice stir-fry with spinach and onions",
+                    "Lentil and avocado salad topped with feta cheese and lemon juice"
+                ],
+                swimming: [
+                    "Whole grain pasta salad with avocado, feta, and walnuts",
+                    "Sweet potato and red bean bowl with spinach and pecans",
+                    "Banana, peanut butter, and oat milk smoothie",
+                    "Quinoa bowl with mushrooms, spinach, and lemon juice"
+                ],
+                biking: [
+                    "Black bean, millet, and avocado bowl with broccoli",
+                    "Egg sandwich on whole grain bread with spinach and feta",
+                    "Bulgur salad with lentils, onions, and lemon juice",
+                    "Apple slices with peanut butter, walnuts, and spelt bran"
+                ],
+                running: [
+                    "Oat milk smoothie with bananas, pecans, and spinach",
+                    "Tofu scramble with sweet potatoes, onions, and mushrooms",
+                    "Salmon with brown rice, broccoli, and lemon juice",
+                    "Whole grain toast topped with peanut butter, bananas, and walnuts"
+                ]
+            };
+
+            const mealOptions = meals[workoutType];
+            const randomIndex = Math.floor(Math.random() * mealOptions.length);
+            return mealOptions[randomIndex];
+        }
+
+        function suggestMeal() {
+            const workoutType = document.getElementById("workoutType").value;
+            if (workoutType) {
+                const meal = getRandomMeal(workoutType);
+                document.getElementById("mealSuggestion").innerText = `Suggested Meal: ${meal}`;
+            } else {
+                document.getElementById("mealSuggestion").innerText = "Please select a workout type.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Customized Post-Workout Meal Suggestion</h2>
+    <label for="workoutType">Select your workout:</label>
+    <select id="workoutType">
+        <option value="">--Select--</option>
+        <option value="weight_lifting">Weight Lifting</option>
+        <option value="swimming">Swimming</option>
+        <option value="biking">Biking</option>
+        <option value="running">Running</option>
+    </select>
+    <button onclick="suggestMeal()">Get Meal Suggestion</button>
+    <p id="mealSuggestion"></p>
+</body>
+</html>
